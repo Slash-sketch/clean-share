@@ -20,6 +20,9 @@ from urllib.parse import quote, unquote
 
 __all__ = ["clean", "clean_text", "share_links", "is_clean", "DEFAULT_RULES", "load_rules"]
 
+__version__ = "0.1.0"
+__author__ = "Slash-sketch"
+
 DEFAULT_RULES = {
     "version": "0.2.0",
     "updated": "2026-11-17",
