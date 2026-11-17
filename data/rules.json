@@ -1,1 +1,546 @@
-{"global_note":"Any parameter whose lower-cased name starts with 'utm_' is also stripped, even if it is not in this list.","global_strip":["utm_source","utm_medium","utm_campaign","utm_term","utm_content","utm_id","utm_source_platform","utm_creative_format","utm_marketing_tactic","fbclid","fb_action_ids","fb_action_types","fb_source","fb_ref","gclid","gbraid","wbraid","msclkid","mc_cid","mc_eid","igshid","igsh","twclid","li_fat_id","dclid","yclid","_ga","_gl","_gac","_fbp","srsltid","gad_source","vero_id","vero_conv","vero_event","_hsenc","_hsmi","_ke","_kx","mkt_tok"],"note":"Clean-room rule list built from public tracking-parameter names and provider help pages. NOT copied from ClearURLs (LGPL) or any other rule set. Each provider carries a source. If a parameter is not listed here, Clean-share keeps it.","providers":[{"hosts":["youtube.com","www.youtube.com","m.youtube.com","youtu.be","music.youtube.com"],"id":"youtube","keep":["v","t","list","index","start","end"],"source":"https://support.google.com/youtube/answer/171780","strip":["si","feature","ab_channel","pp","embeds_referring_euri","embeds_referring_origin"]},{"hosts":["google.com","www.google.com","google.co.uk","www.google.co.uk"],"id":"google-search","keep":["q","hl"],"source":"https://support.google.com/websearch/answer/35890","strip":["ved","ei","uact","oq","gs_lcp","sclient","source","sca_esv","sxsrf","rlz","sa","sqi","iflsig","gbv"]},{"hosts":["facebook.com","www.facebook.com","m.facebook.com","fb.com","www.fb.com"],"id":"facebook","keep":["id","story_fbid","v"],"source":"https://www.facebook.com/help/192946942409345","strip":["mibextid","ref","__tn__","__xts__","__cft__","eav","paipv","rdc","rdr","idorvanity"]},{"hosts":["instagram.com","www.instagram.com"],"id":"instagram","keep":[],"source":"https://help.instagram.com/116024195217477","strip":["hl","eav"]},{"hosts":["tiktok.com","www.tiktok.com","vm.tiktok.com"],"id":"tiktok","keep":["is_copy_url"],"source":"https://support.tiktok.com/en/using-tiktok/sharing-videos","strip":["_t","_r","is_from_webapp","sender_device","sender_web_id","sec_uid","share_app_id","share_iid","u_code","share_item_id","timestamp"]},{"hosts":["x.com","www.x.com","twitter.com","www.twitter.com","mobile.twitter.com"],"id":"x","keep":["q"],"source":"https://help.x.com/en/using-x/search","strip":["s","ref_src","ref_url","ref_cta"]},{"hosts":["amazon.com","www.amazon.com","amazon.co.uk","www.amazon.co.uk"],"id":"amazon","keep":["k","node","asin"],"source":"https://www.amazon.com/gp/help/customer/display.html?nodeId=468520","strip":["tag","ref","psc","pd_rd_w","pd_rd_r","pf_rd_p","pf_rd_r","_encoding","content-id","srsltid","s","sprefix"]},{"hosts":["aliexpress.com","www.aliexpress.com","aliexpress.us","www.aliexpress.us"],"id":"aliexpress","keep":[],"source":"https://helpcenter.aliexpress.com/s/article","strip":["spm","algo_pvid","algo_exp_id","pdp_npi","scm","aff_fcid","aff_fsk","aff_platform","aff_trace_key","dp","isViewCP","srcSns"]},{"hosts":["open.spotify.com","spotify.com","www.spotify.com"],"id":"spotify","keep":[],"source":"https://support.spotify.com/article/share-music/","strip":["si","context","nd"]},{"hosts":["linkedin.com","www.linkedin.com"],"id":"linkedin","keep":["id","start"],"source":"https://www.linkedin.com/help/linkedin/answer/a1337205","strip":["trk","trkInfo","lipi","lici","upsell","refId","midSig"]}],"signed_guard":{"id":"signed-url-guard","note":"If a URL carries any of these parameters (case-insensitive), or any parameter starting with 'x-amz-', the URL is returned completely untouched. Stripping a signed parameter would break the link.","params":["sig","signature","hmac","token","expires","policy"]},"updated":"2026-11-17","version":"0.1.0"}
+{
+  "global_note": "Any parameter whose lower-cased name starts with 'utm_' is also stripped, even if it is not in this list.",
+  "global_strip": [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+    "utm_id",
+    "utm_source_platform",
+    "utm_creative_format",
+    "utm_marketing_tactic",
+    "fbclid",
+    "fb_action_ids",
+    "fb_action_types",
+    "fb_source",
+    "fb_ref",
+    "gclid",
+    "gbraid",
+    "wbraid",
+    "msclkid",
+    "mc_cid",
+    "mc_eid",
+    "igshid",
+    "igsh",
+    "twclid",
+    "li_fat_id",
+    "dclid",
+    "yclid",
+    "_ga",
+    "_gl",
+    "_gac",
+    "_fbp",
+    "srsltid",
+    "gad_source",
+    "vero_id",
+    "vero_conv",
+    "vero_event",
+    "_hsenc",
+    "_hsmi",
+    "_ke",
+    "_kx",
+    "mkt_tok"
+  ],
+  "note": "Clean-room rule list built from public tracking-parameter names and provider help pages. NOT copied from ClearURLs (LGPL) or any other rule set. Each provider carries a source. If a parameter is not listed here, Clean-share keeps it.",
+  "providers": [
+    {
+      "hosts": [
+        "youtube.com",
+        "www.youtube.com",
+        "m.youtube.com",
+        "youtu.be",
+        "music.youtube.com"
+      ],
+      "id": "youtube",
+      "keep": [
+        "v",
+        "t",
+        "list",
+        "index",
+        "start",
+        "end"
+      ],
+      "source": "https://support.google.com/youtube/answer/171780",
+      "strip": [
+        "si",
+        "feature",
+        "ab_channel",
+        "pp",
+        "embeds_referring_euri",
+        "embeds_referring_origin"
+      ]
+    },
+    {
+      "hosts": [
+        "google.com",
+        "www.google.com",
+        "google.co.uk",
+        "www.google.co.uk"
+      ],
+      "id": "google-search",
+      "keep": [
+        "q",
+        "hl"
+      ],
+      "source": "https://support.google.com/websearch/answer/35890",
+      "strip": [
+        "ved",
+        "ei",
+        "uact",
+        "oq",
+        "gs_lcp",
+        "sclient",
+        "source",
+        "sca_esv",
+        "sxsrf",
+        "rlz",
+        "sa",
+        "sqi",
+        "iflsig",
+        "gbv"
+      ]
+    },
+    {
+      "hosts": [
+        "facebook.com",
+        "www.facebook.com",
+        "m.facebook.com",
+        "fb.com",
+        "www.fb.com"
+      ],
+      "id": "facebook",
+      "keep": [
+        "id",
+        "story_fbid",
+        "v"
+      ],
+      "source": "https://www.facebook.com/help/192946942409345",
+      "strip": [
+        "mibextid",
+        "ref",
+        "__tn__",
+        "__xts__",
+        "__cft__",
+        "eav",
+        "paipv",
+        "rdc",
+        "rdr",
+        "idorvanity"
+      ]
+    },
+    {
+      "hosts": [
+        "instagram.com",
+        "www.instagram.com"
+      ],
+      "id": "instagram",
+      "keep": [],
+      "source": "https://help.instagram.com/116024195217477",
+      "strip": [
+        "hl",
+        "eav"
+      ]
+    },
+    {
+      "hosts": [
+        "tiktok.com",
+        "www.tiktok.com",
+        "vm.tiktok.com"
+      ],
+      "id": "tiktok",
+      "keep": [
+        "is_copy_url"
+      ],
+      "source": "https://support.tiktok.com/en/using-tiktok/sharing-videos",
+      "strip": [
+        "_t",
+        "_r",
+        "is_from_webapp",
+        "sender_device",
+        "sender_web_id",
+        "sec_uid",
+        "share_app_id",
+        "share_iid",
+        "u_code",
+        "share_item_id",
+        "timestamp"
+      ]
+    },
+    {
+      "hosts": [
+        "x.com",
+        "www.x.com",
+        "twitter.com",
+        "www.twitter.com",
+        "mobile.twitter.com"
+      ],
+      "id": "x",
+      "keep": [
+        "q"
+      ],
+      "source": "https://help.x.com/en/using-x/search",
+      "strip": [
+        "s",
+        "ref_src",
+        "ref_url",
+        "ref_cta"
+      ]
+    },
+    {
+      "hosts": [
+        "amazon.com",
+        "www.amazon.com",
+        "amazon.co.uk",
+        "www.amazon.co.uk"
+      ],
+      "id": "amazon",
+      "keep": [
+        "k",
+        "node",
+        "asin"
+      ],
+      "source": "https://www.amazon.com/gp/help/customer/display.html?nodeId=468520",
+      "strip": [
+        "tag",
+        "ref",
+        "psc",
+        "pd_rd_w",
+        "pd_rd_r",
+        "pf_rd_p",
+        "pf_rd_r",
+        "_encoding",
+        "content-id",
+        "srsltid",
+        "s",
+        "sprefix"
+      ]
+    },
+    {
+      "hosts": [
+        "aliexpress.com",
+        "www.aliexpress.com",
+        "aliexpress.us",
+        "www.aliexpress.us"
+      ],
+      "id": "aliexpress",
+      "keep": [],
+      "source": "https://helpcenter.aliexpress.com/s/article",
+      "strip": [
+        "spm",
+        "algo_pvid",
+        "algo_exp_id",
+        "pdp_npi",
+        "scm",
+        "aff_fcid",
+        "aff_fsk",
+        "aff_platform",
+        "aff_trace_key",
+        "dp",
+        "isViewCP",
+        "srcSns"
+      ]
+    },
+    {
+      "hosts": [
+        "open.spotify.com",
+        "spotify.com",
+        "www.spotify.com"
+      ],
+      "id": "spotify",
+      "keep": [],
+      "source": "https://support.spotify.com/article/share-music/",
+      "strip": [
+        "si",
+        "context",
+        "nd"
+      ]
+    },
+    {
+      "hosts": [
+        "linkedin.com",
+        "www.linkedin.com"
+      ],
+      "id": "linkedin",
+      "keep": [
+        "id",
+        "start"
+      ],
+      "source": "https://www.linkedin.com/help/linkedin/answer/a1337205",
+      "strip": [
+        "trk",
+        "trkInfo",
+        "lipi",
+        "lici",
+        "upsell",
+        "refId",
+        "midSig"
+      ]
+    },
+    {
+      "id": "daraz",
+      "hosts": [
+        "daraz.pk",
+        "www.daraz.pk",
+        "daraz.com",
+        "www.daraz.com"
+      ],
+      "strip": [
+        "spm",
+        "algo_pvid",
+        "algo_exp_id",
+        "scm",
+        "search",
+        "traffic_source"
+      ],
+      "keep": [
+        "sku",
+        "id",
+        "q"
+      ],
+      "source": "https://www.daraz.pk/help/"
+    },
+    {
+      "id": "olx",
+      "hosts": [
+        "olx.com.pk",
+        "www.olx.com.pk",
+        "olx.com",
+        "www.olx.com"
+      ],
+      "strip": [
+        "bs",
+        "t",
+        "referrer"
+      ],
+      "keep": [
+        "id",
+        "q"
+      ],
+      "source": "https://www.olx.com.pk/"
+    },
+    {
+      "id": "shopee",
+      "hosts": [
+        "shopee.ph",
+        "shopee.com.my",
+        "shopee.sg",
+        "shopee.com",
+        "www.shopee.ph",
+        "www.shopee.com.my"
+      ],
+      "strip": [
+        "sp_atk",
+        "xpt",
+        "is_from_search",
+        "af_siteid"
+      ],
+      "keep": [
+        "i",
+        "s"
+      ],
+      "source": "https://shopee.ph/"
+    },
+    {
+      "id": "ebay",
+      "hosts": [
+        "ebay.com",
+        "www.ebay.com",
+        "ebay.co.uk",
+        "www.ebay.co.uk"
+      ],
+      "strip": [
+        "_trkparms",
+        "_trksid",
+        "hash",
+        "amdata",
+        "mkcid",
+        "mkrid",
+        "campid",
+        "toolid",
+        "customid"
+      ],
+      "keep": [
+        "itm",
+        "_nkw"
+      ],
+      "source": "https://www.ebay.com/help/"
+    },
+    {
+      "id": "reddit",
+      "hosts": [
+        "reddit.com",
+        "www.reddit.com",
+        "old.reddit.com",
+        "out.reddit.com"
+      ],
+      "strip": [
+        "ref",
+        "ref_source",
+        "context"
+      ],
+      "keep": [
+        "q"
+      ],
+      "source": "https://support.reddithelp.com/",
+      "unwrap_param": "url",
+      "unwrap_hosts": [
+        "out.reddit.com"
+      ]
+    },
+    {
+      "id": "medium",
+      "hosts": [
+        "medium.com",
+        "www.medium.com"
+      ],
+      "strip": [
+        "sk",
+        "source"
+      ],
+      "keep": [],
+      "source": "https://help.medium.com/"
+    },
+    {
+      "id": "gmail-wrapper",
+      "hosts": [
+        "www.google.com",
+        "google.com"
+      ],
+      "strip": [],
+      "keep": [],
+      "source": "https://support.google.com/accounts/answer/32040",
+      "unwrap_param": "q",
+      "path_prefix": "/url"
+    },
+    {
+      "id": "outlook-safelinks",
+      "hosts": [
+        "safelinks.protection.outlook.com"
+      ],
+      "strip": [],
+      "keep": [],
+      "source": "https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about",
+      "unwrap_param": "url"
+    },
+    {
+      "id": "tco-bitly",
+      "hosts": [
+        "t.co",
+        "bit.ly",
+        "bitly.com",
+        "www.bitly.com"
+      ],
+      "strip": [],
+      "keep": [],
+      "source": "https://help.x.com/en/using-x/how-to-use-t-co",
+      "unwrap_param": "url"
+    },
+    {
+      "id": "pinterest",
+      "hosts": [
+        "pinterest.com",
+        "www.pinterest.com",
+        "pin.it"
+      ],
+      "strip": [
+        "invite"
+      ],
+      "keep": [],
+      "source": "https://help.pinterest.com/en/article/share-pins"
+    },
+    {
+      "id": "snapchat",
+      "hosts": [
+        "snapchat.com",
+        "www.snapchat.com"
+      ],
+      "strip": [
+        "sender_web_id",
+        "share_id"
+      ],
+      "keep": [],
+      "source": "https://help.snapchat.com/"
+    },
+    {
+      "id": "telegram",
+      "hosts": [
+        "t.me",
+        "telegram.me",
+        "telegram.org",
+        "www.telegram.org"
+      ],
+      "strip": [
+        "ref"
+      ],
+      "keep": [
+        "start"
+      ],
+      "source": "https://telegram.org/faq"
+    },
+    {
+      "id": "whatsapp",
+      "hosts": [
+        "wa.me",
+        "api.whatsapp.com",
+        "whatsapp.com",
+        "www.whatsapp.com"
+      ],
+      "strip": [],
+      "keep": [
+        "text",
+        "phone"
+      ],
+      "source": "https://faq.whatsapp.com/"
+    },
+    {
+      "id": "shein",
+      "hosts": [
+        "shein.com",
+        "www.shein.com"
+      ],
+      "strip": [
+        "src_identifier",
+        "src_module",
+        "src_tab_page_id",
+        "main_attr"
+      ],
+      "keep": [
+        "goods_id"
+      ],
+      "source": "https://www.shein.com/"
+    },
+    {
+      "id": "temu",
+      "hosts": [
+        "temu.com",
+        "www.temu.com"
+      ],
+      "strip": [
+        "_x_sessn_id",
+        "_x_ns",
+        "refer_page_name",
+        "refer_page_id",
+        "refer_page_sn"
+      ],
+      "keep": [
+        "goods_id"
+      ],
+      "source": "https://www.temu.com/"
+    }
+  ],
+  "signed_guard": {
+    "id": "signed-url-guard",
+    "note": "If a URL carries any of these parameters (case-insensitive), or any parameter starting with 'x-amz-', the URL is returned completely untouched. Stripping a signed parameter would break the link.",
+    "params": [
+      "sig",
+      "signature",
+      "hmac",
+      "token",
+      "expires",
+      "policy"
+    ]
+  },
+  "updated": "2026-11-17",
+  "version": "0.2.0"
+}
