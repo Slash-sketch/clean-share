@@ -58,7 +58,7 @@ check("isClean signed url untouched", isClean("https://example.com/f?sig=abc&utm
 
 // 5. Rules file sanity
 check("rules global count", rules.global_strip.length, 40);
-check("rules provider count", rules.providers.length, 25);
+check("rules provider count", rules.providers.length, 35);
 check("rules signed guard", rules.signed_guard.params, ["sig", "signature", "hmac", "token", "expires", "policy"]);
 
 console.log(`JS: ${passed} passed, ${failed} failed, ${fixtures.length} fixtures`);

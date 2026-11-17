@@ -74,7 +74,7 @@ check("is_clean signed url untouched", is_clean("https://example.com/f?sig=abc&u
 
 # 5. Rules file sanity
 check("rules global count", len(RULES["global_strip"]), 40)
-check("rules provider count", len(RULES["providers"]), 25)
+check("rules provider count", len(RULES["providers"]), 35)
 check("rules signed guard", RULES["signed_guard"]["params"],
       ["sig", "signature", "hmac", "token", "expires", "policy"])
 
