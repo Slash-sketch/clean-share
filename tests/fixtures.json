@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "count": 102,
+  "version": "0.2.0",
+  "count": 132,
   "fixtures": [
     {
       "input": "https://example.com/page?utm_source=x&id=7",
@@ -1079,6 +1079,327 @@
       ],
       "kept": [],
       "note": "edge: trailing slash, query removed"
+    },
+    {
+      "input": "https://www.daraz.pk/products/i123.html?spm=a2a0e.123&sku=456&utm_source=x",
+      "expected_url": "https://www.daraz.pk/products/i123.html?sku=456",
+      "removed": [
+        "spm",
+        "utm_source"
+      ],
+      "kept": [
+        "sku"
+      ],
+      "note": "daraz: strip spm/utm, keep sku"
+    },
+    {
+      "input": "https://www.daraz.pk/catalog/?q=shoes&search=1&spm=abc",
+      "expected_url": "https://www.daraz.pk/catalog/?q=shoes",
+      "removed": [
+        "search",
+        "spm"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "daraz: keep q, strip search/spm"
+    },
+    {
+      "input": "https://www.olx.com.pk/item/test-i123456?bs=xyz&t=abc",
+      "expected_url": "https://www.olx.com.pk/item/test-i123456",
+      "removed": [
+        "bs",
+        "t"
+      ],
+      "kept": [],
+      "note": "olx: strip bs/t"
+    },
+    {
+      "input": "https://www.olx.com.pk/ads/?q=car&id=5&referrer=home",
+      "expected_url": "https://www.olx.com.pk/ads/?q=car&id=5",
+      "removed": [
+        "referrer"
+      ],
+      "kept": [
+        "q",
+        "id"
+      ],
+      "note": "olx: keep q/id, strip referrer"
+    },
+    {
+      "input": "https://shopee.ph/product-i.123.456?sp_atk=abc&xpt=def",
+      "expected_url": "https://shopee.ph/product-i.123.456",
+      "removed": [
+        "sp_atk",
+        "xpt"
+      ],
+      "kept": [],
+      "note": "shopee: strip sp_atk/xpt"
+    },
+    {
+      "input": "https://shopee.com.my/item?i=123&s=456&sp_atk=abc&is_from_search=1",
+      "expected_url": "https://shopee.com.my/item?i=123&s=456",
+      "removed": [
+        "sp_atk",
+        "is_from_search"
+      ],
+      "kept": [
+        "i",
+        "s"
+      ],
+      "note": "shopee: keep i/s, strip sp_atk/is_from_search"
+    },
+    {
+      "input": "https://www.ebay.com/itm/123?_trkparms=abc&_trksid=def",
+      "expected_url": "https://www.ebay.com/itm/123",
+      "removed": [
+        "_trkparms",
+        "_trksid"
+      ],
+      "kept": [],
+      "note": "ebay: strip _trkparms/_trksid"
+    },
+    {
+      "input": "https://www.ebay.com/sch/i.html?_nkw=laptop&mkcid=abc&campid=def",
+      "expected_url": "https://www.ebay.com/sch/i.html?_nkw=laptop",
+      "removed": [
+        "mkcid",
+        "campid"
+      ],
+      "kept": [
+        "_nkw"
+      ],
+      "note": "ebay: keep _nkw, strip mkcid/campid"
+    },
+    {
+      "input": "https://www.reddit.com/search/?q=clean&ref=abc&context=xyz",
+      "expected_url": "https://www.reddit.com/search/?q=clean",
+      "removed": [
+        "ref",
+        "context"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "reddit: keep q, strip ref/context"
+    },
+    {
+      "input": "https://out.reddit.com/t3_abc?url=https%3A%2F%2Fexample.com%2Fpage%3Futm_source%3Dx%26id%3D7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "reddit: unwrap out.reddit.com url param, then clean target"
+    },
+    {
+      "input": "https://medium.com/@user/title-abc?sk=123&source=home",
+      "expected_url": "https://medium.com/@user/title-abc",
+      "removed": [
+        "sk",
+        "source"
+      ],
+      "kept": [],
+      "note": "medium: strip sk/source"
+    },
+    {
+      "input": "https://medium.com/@user/title-abc?utm_source=x",
+      "expected_url": "https://medium.com/@user/title-abc",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [],
+      "note": "medium: strip utm_source (global)"
+    },
+    {
+      "input": "https://www.google.com/url?q=https%3A%2F%2Fexample.com%2Fpage%3Futm_source%3Dx%26id%3D7&sa=D&source=editors",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "gmail-wrapper: unwrap google /url q param, then clean target"
+    },
+    {
+      "input": "https://www.google.com/url?q=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dabc%26si%3D123&sa=D",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [
+        "si"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "gmail-wrapper: unwrap to youtube, strip si, keep v"
+    },
+    {
+      "input": "https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fexample.com%2Fpage%3Ffbclid%3Dabc%26id%3D7&data=xyz&sdata=abc",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "fbclid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "outlook-safelinks: unwrap url param, strip fbclid"
+    },
+    {
+      "input": "https://safelinks.protection.outlook.com/?url=https%3A%2F%2Fexample.com%2Fa%3Futm_source%3Dx&data=1",
+      "expected_url": "https://example.com/a",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [],
+      "note": "outlook-safelinks: unwrap url param, strip utm"
+    },
+    {
+      "input": "https://t.co/abc123?url=https%3A%2F%2Fexample.com%2Fpage%3Futm_source%3Dx%26id%3D7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "tco-bitly: unwrap encoded url param only; real short codes have no url param and stay unchanged"
+    },
+    {
+      "input": "https://bit.ly/3abcXYZ",
+      "expected_url": "https://bit.ly/3abcXYZ",
+      "removed": [],
+      "kept": [],
+      "note": "tco-bitly: real short code has no encoded target, left unchanged (no network following)"
+    },
+    {
+      "input": "https://www.pinterest.com/pin/123/?invite=abc&utm_source=x",
+      "expected_url": "https://www.pinterest.com/pin/123/",
+      "removed": [
+        "invite",
+        "utm_source"
+      ],
+      "kept": [],
+      "note": "pinterest: strip invite/utm"
+    },
+    {
+      "input": "https://pin.it/abc123?utm_medium=x",
+      "expected_url": "https://pin.it/abc123",
+      "removed": [
+        "utm_medium"
+      ],
+      "kept": [],
+      "note": "pinterest: pin.it, strip utm_medium"
+    },
+    {
+      "input": "https://www.snapchat.com/add/user?sender_web_id=abc&share_id=def",
+      "expected_url": "https://www.snapchat.com/add/user",
+      "removed": [
+        "sender_web_id",
+        "share_id"
+      ],
+      "kept": [],
+      "note": "snapchat: strip sender_web_id/share_id"
+    },
+    {
+      "input": "https://www.snapchat.com/spotlight/123?share_id=abc",
+      "expected_url": "https://www.snapchat.com/spotlight/123",
+      "removed": [
+        "share_id"
+      ],
+      "kept": [],
+      "note": "snapchat: strip share_id"
+    },
+    {
+      "input": "https://t.me/share/url?url=https%3A%2F%2Fexample.com%2Fpage%3Futm_source%3Dx&text=hi&ref=abc",
+      "expected_url": "https://t.me/share/url?url=https%3A%2F%2Fexample.com%2Fpage%3Futm_source%3Dx&text=hi",
+      "removed": [
+        "ref"
+      ],
+      "kept": [
+        "url",
+        "text"
+      ],
+      "note": "telegram: share url param is the message target, kept; strip ref only"
+    },
+    {
+      "input": "https://t.me/mybot?start=abc&ref=xyz",
+      "expected_url": "https://t.me/mybot?start=abc",
+      "removed": [
+        "ref"
+      ],
+      "kept": [
+        "start"
+      ],
+      "note": "telegram: keep start, strip ref"
+    },
+    {
+      "input": "https://wa.me/923001234567?text=Hi&utm_source=x",
+      "expected_url": "https://wa.me/923001234567?text=Hi",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "text"
+      ],
+      "note": "whatsapp: keep text, strip utm"
+    },
+    {
+      "input": "https://api.whatsapp.com/send?phone=923001234567&text=Hello",
+      "expected_url": "https://api.whatsapp.com/send?phone=923001234567&text=Hello",
+      "removed": [],
+      "kept": [
+        "phone",
+        "text"
+      ],
+      "note": "whatsapp: clean link unchanged"
+    },
+    {
+      "input": "https://www.shein.com/product-p-123.html?goods_id=456&src_identifier=abc&src_module=xyz",
+      "expected_url": "https://www.shein.com/product-p-123.html?goods_id=456",
+      "removed": [
+        "src_identifier",
+        "src_module"
+      ],
+      "kept": [
+        "goods_id"
+      ],
+      "note": "shein: keep goods_id, strip src_identifier/src_module"
+    },
+    {
+      "input": "https://www.shein.com/p-123-cat.html?main_attr=abc&src_tab_page_id=def",
+      "expected_url": "https://www.shein.com/p-123-cat.html",
+      "removed": [
+        "main_attr",
+        "src_tab_page_id"
+      ],
+      "kept": [],
+      "note": "shein: strip main_attr/src_tab_page_id"
+    },
+    {
+      "input": "https://www.temu.com/product-p-123.html?goods_id=456&_x_sessn_id=abc&_x_ns=def",
+      "expected_url": "https://www.temu.com/product-p-123.html?goods_id=456",
+      "removed": [
+        "_x_sessn_id",
+        "_x_ns"
+      ],
+      "kept": [
+        "goods_id"
+      ],
+      "note": "temu: keep goods_id, strip _x_sessn_id/_x_ns"
+    },
+    {
+      "input": "https://www.temu.com/goods.html?refer_page_name=home&refer_page_id=1&goods_id=789",
+      "expected_url": "https://www.temu.com/goods.html?goods_id=789",
+      "removed": [
+        "refer_page_name",
+        "refer_page_id"
+      ],
+      "kept": [
+        "goods_id"
+      ],
+      "note": "temu: keep goods_id, strip refer_page_*"
     }
   ]
 }
