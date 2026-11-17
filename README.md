@@ -107,7 +107,7 @@ is_clean("https://example.com/page?id=7")  # True
 
 The JS and Python APIs are identical by design: same function names
 (`clean` / `clean_text`, `cleanText` in JS), same option names, same
-`data/rules.json` rule file, and the same 132 fixtures drive both test
+`data/rules.json` rule file, and the same 152 fixtures drive both test
 suites — so a link cleaned in one language cleans the same way in the other.
 
 ## Rules
@@ -118,10 +118,14 @@ suites — so a link cleaned in one language cleans the same way in the other.
   with `utm_`), `fbclid`, `gclid`, `gbraid`, `wbraid`, `msclkid`,
   `mc_cid` / `mc_eid`, `igshid`, `twclid`, `li_fat_id`, `dclid`, `_ga`,
   `_gl`, `srsltid`, and more.
-- **10 providers at v1** — YouTube, Google Search, Facebook, Instagram,
-  TikTok, X, Amazon, AliExpress, Spotify, LinkedIn. Each provider has
-  `id`, `hosts`, `strip`, `keep`, and a `source` (the provider's own
-  help page). See `CONTRIBUTING.md` to add one.
+- **35 providers** — YouTube, Google Search, Facebook, Instagram,
+  TikTok, X, Amazon, AliExpress, Spotify, LinkedIn, Daraz, OLX, Shopee,
+  eBay, Reddit, Medium, Pinterest, Snapchat, Telegram, WhatsApp, Shein,
+  Temu, Quora, Notion, Etsy, Flipkart, Booking.com, IMDb, Google Play,
+  Apple App Store, Steam, Udemy, plus the redirect wrappers below.
+  Each provider has `id`, `hosts`, `strip`, `keep`, and a `source`
+  (the provider's own help page, or the public record that documents
+  the parameter). See `CONTRIBUTING.md` to add one.
 
 The rule list was built clean-room from public parameter names and
 provider help pages. It is **not** copied from ClearURLs (LGPL) or any
@@ -134,7 +138,7 @@ node tests/test_js.mjs      # JS suite
 python3 tests/test_py.py    # Python suite
 ```
 
-Both suites run the same `tests/fixtures.json` (132 before/after URL
+Both suites run the same `tests/fixtures.json` (152 before/after URL
 pairs: global trackers, YouTube, Amazon, Facebook, signed URLs that must
 stay untouched, and edge cases) plus `cleanText` / `shareLinks` /
 `isClean` checks.
@@ -152,7 +156,7 @@ clean-share/
   data/
     rules.json         # canonical rules (global + providers)
   tests/
-    fixtures.json      # 132 before/after URL pairs
+    fixtures.json      # 152 before/after URL pairs
     test_js.mjs        # JS test runner
     test_py.py         # Python test runner
   demo/                # static PWA demo (Week 3): paste a link or message, clean it, copy/share
@@ -167,6 +171,16 @@ clean-share/
 ```
 
 ## Status
+
+Week 5 — 10 more providers (Quora, Notion, Etsy, Flipkart, Booking.com,
+IMDb, Google Play, Apple App Store, Steam, Udemy) → 35 providers and
+152 fixtures. Deliberate keeps: Quora `share` is never stripped
+(`?share=1` bypasses the login wall), Flipkart `pid` and Udemy
+`couponCode` stay (product identity / discount), Zoom was left out —
+its `zak` parameter is an auth token, stripping it would break host
+links. **Nothing is published yet**: not to npm, not to PyPI, not to
+the Chrome Web Store. Name `clean-share` was free on npm and PyPI when
+checked 2026-11-17.
 
 Week 4 — Chrome MV3 extension in `extension/` (popup + right-click
 service worker on the same core) plus npm (`package.json`) and PyPI
