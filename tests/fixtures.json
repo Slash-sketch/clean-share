@@ -1,0 +1,1084 @@
+{
+  "version": "0.1.0",
+  "count": 102,
+  "fixtures": [
+    {
+      "input": "https://example.com/page?utm_source=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip utm_source, keep id"
+    },
+    {
+      "input": "https://example.com/page?utm_medium=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_medium"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip utm_medium, keep id"
+    },
+    {
+      "input": "https://example.com/page?utm_campaign=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_campaign"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip utm_campaign, keep id"
+    },
+    {
+      "input": "https://example.com/page?utm_term=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_term"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip utm_term, keep id"
+    },
+    {
+      "input": "https://example.com/page?utm_content=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_content"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip utm_content, keep id"
+    },
+    {
+      "input": "https://example.com/page?fbclid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "fbclid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip fbclid, keep id"
+    },
+    {
+      "input": "https://example.com/page?gclid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "gclid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip gclid, keep id"
+    },
+    {
+      "input": "https://example.com/page?gbraid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "gbraid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip gbraid, keep id"
+    },
+    {
+      "input": "https://example.com/page?msclkid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "msclkid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip msclkid, keep id"
+    },
+    {
+      "input": "https://example.com/page?mc_cid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "mc_cid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip mc_cid, keep id"
+    },
+    {
+      "input": "https://example.com/page?igshid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "igshid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip igshid, keep id"
+    },
+    {
+      "input": "https://example.com/page?twclid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "twclid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip twclid, keep id"
+    },
+    {
+      "input": "https://example.com/page?li_fat_id=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "li_fat_id"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip li_fat_id, keep id"
+    },
+    {
+      "input": "https://example.com/page?dclid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "dclid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip dclid, keep id"
+    },
+    {
+      "input": "https://example.com/page?_ga=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "_ga"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip _ga, keep id"
+    },
+    {
+      "input": "https://example.com/page?_gl=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "_gl"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip _gl, keep id"
+    },
+    {
+      "input": "https://example.com/page?srsltid=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "srsltid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip srsltid, keep id"
+    },
+    {
+      "input": "https://example.com/page?vero_id=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "vero_id"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip vero_id, keep id"
+    },
+    {
+      "input": "https://example.com/page?_hsenc=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "_hsenc"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip _hsenc, keep id"
+    },
+    {
+      "input": "https://example.com/page?mkt_tok=x&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "mkt_tok"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: strip mkt_tok, keep id"
+    },
+    {
+      "input": "https://example.com/page?utm_foo=bar&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_foo"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: utm_* wildcard"
+    },
+    {
+      "input": "https://example.com/page?utm_custom_param=1&id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [
+        "utm_custom_param"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: utm_* wildcard, long name"
+    },
+    {
+      "input": "https://example.com/a?utm_source=google&utm_medium=cpc&gclid=abc&id=1",
+      "expected_url": "https://example.com/a?id=1",
+      "removed": [
+        "utm_source",
+        "utm_medium",
+        "gclid"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: several trackers at once"
+    },
+    {
+      "input": "https://example.com/a?fbclid=abc&igshid=xyz&twclid=1",
+      "expected_url": "https://example.com/a",
+      "removed": [
+        "fbclid",
+        "igshid",
+        "twclid"
+      ],
+      "kept": [],
+      "note": "global: all params are trackers, query removed"
+    },
+    {
+      "input": "https://example.com/a?_ga=1&_gl=2&_gac=3&id=9",
+      "expected_url": "https://example.com/a?id=9",
+      "removed": [
+        "_ga",
+        "_gl",
+        "_gac"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: Google analytics params"
+    },
+    {
+      "input": "https://example.com/a?mc_cid=1&mc_eid=2&vero_id=3&id=5",
+      "expected_url": "https://example.com/a?id=5",
+      "removed": [
+        "mc_cid",
+        "mc_eid",
+        "vero_id"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: email trackers"
+    },
+    {
+      "input": "https://example.com/a?utm_source=x&id=7&utm_campaign=y",
+      "expected_url": "https://example.com/a?id=7",
+      "removed": [
+        "utm_source",
+        "utm_campaign"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "global: trackers around a kept param"
+    },
+    {
+      "input": "https://example.com/a?gad_source=1&srsltid=abc&yclid=2&q=test",
+      "expected_url": "https://example.com/a?q=test",
+      "removed": [
+        "gad_source",
+        "srsltid",
+        "yclid"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "global: ad click ids"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&si=abc123",
+      "expected_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "removed": [
+        "si"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: strip si, keep v"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&feature=shared",
+      "expected_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "removed": [
+        "feature"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: strip feature"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s&list=PL123&si=abc",
+      "expected_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s&list=PL123",
+      "removed": [
+        "si"
+      ],
+      "kept": [
+        "v",
+        "t",
+        "list"
+      ],
+      "note": "youtube: keep v/t/list"
+    },
+    {
+      "input": "https://youtu.be/dQw4w9WgXcQ?si=abc&t=10",
+      "expected_url": "https://youtu.be/dQw4w9WgXcQ?t=10",
+      "removed": [
+        "si"
+      ],
+      "kept": [
+        "t"
+      ],
+      "note": "youtube: youtu.be, keep t"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc&ab_channel=Someone",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [
+        "ab_channel"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: strip ab_channel"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc&pp=ygUX",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [
+        "pp"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: strip pp"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: clean link unchanged"
+    },
+    {
+      "input": "https://music.youtube.com/watch?v=abc&si=123",
+      "expected_url": "https://music.youtube.com/watch?v=abc",
+      "removed": [
+        "si"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: music subdomain"
+    },
+    {
+      "input": "https://www.youtube.com/watch?si=abc",
+      "expected_url": "https://www.youtube.com/watch",
+      "removed": [
+        "si"
+      ],
+      "kept": [],
+      "note": "youtube: only tracker, query removed"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc&utm_source=x&si=abc",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [
+        "utm_source",
+        "si"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: global + provider strip"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc&feature=youtu.be",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [
+        "feature"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "youtube: feature=youtu.be"
+    },
+    {
+      "input": "https://www.youtube.com/watch?list=PL1&v=abc&feature=shared&si=x",
+      "expected_url": "https://www.youtube.com/watch?list=PL1&v=abc",
+      "removed": [
+        "feature",
+        "si"
+      ],
+      "kept": [
+        "list",
+        "v"
+      ],
+      "note": "youtube: order preserved"
+    },
+    {
+      "input": "https://www.amazon.com/dp/B08N5WRWNW?tag=aff-20",
+      "expected_url": "https://www.amazon.com/dp/B08N5WRWNW",
+      "removed": [
+        "tag"
+      ],
+      "kept": [],
+      "note": "amazon: strip affiliate tag"
+    },
+    {
+      "input": "https://www.amazon.com/dp/B08N5WRWNW?ref=sr_1_1&psc=1",
+      "expected_url": "https://www.amazon.com/dp/B08N5WRWNW",
+      "removed": [
+        "ref",
+        "psc"
+      ],
+      "kept": [],
+      "note": "amazon: strip ref/psc"
+    },
+    {
+      "input": "https://www.amazon.com/s?k=headphones&tag=aff-20&srsltid=abc",
+      "expected_url": "https://www.amazon.com/s?k=headphones",
+      "removed": [
+        "tag",
+        "srsltid"
+      ],
+      "kept": [
+        "k"
+      ],
+      "note": "amazon: search, keep k"
+    },
+    {
+      "input": "https://www.amazon.com/dp/B08N5WRWNW?pd_rd_w=abc&pd_rd_r=def",
+      "expected_url": "https://www.amazon.com/dp/B08N5WRWNW",
+      "removed": [
+        "pd_rd_w",
+        "pd_rd_r"
+      ],
+      "kept": [],
+      "note": "amazon: strip pd_rd_*"
+    },
+    {
+      "input": "https://www.amazon.com/dp/B08N5WRWNW?asin=B08N5WRWNW&tag=aff-20",
+      "expected_url": "https://www.amazon.com/dp/B08N5WRWNW?asin=B08N5WRWNW",
+      "removed": [
+        "tag"
+      ],
+      "kept": [
+        "asin"
+      ],
+      "note": "amazon: keep asin"
+    },
+    {
+      "input": "https://www.amazon.com/s?k=laptop&node=123&tag=aff-20",
+      "expected_url": "https://www.amazon.com/s?k=laptop&node=123",
+      "removed": [
+        "tag"
+      ],
+      "kept": [
+        "k",
+        "node"
+      ],
+      "note": "amazon: keep k/node"
+    },
+    {
+      "input": "https://www.amazon.com/dp/B08N5WRWNW?_encoding=UTF8&tag=aff-20",
+      "expected_url": "https://www.amazon.com/dp/B08N5WRWNW",
+      "removed": [
+        "_encoding",
+        "tag"
+      ],
+      "kept": [],
+      "note": "amazon: strip _encoding"
+    },
+    {
+      "input": "https://www.amazon.com/dp/B08N5WRWNW?asin=B08N5WRWNW",
+      "expected_url": "https://www.amazon.com/dp/B08N5WRWNW?asin=B08N5WRWNW",
+      "removed": [],
+      "kept": [
+        "asin"
+      ],
+      "note": "amazon: clean link unchanged"
+    },
+    {
+      "input": "https://www.facebook.com/photo/?fbid=123&fbclid=abc",
+      "expected_url": "https://www.facebook.com/photo/?fbid=123",
+      "removed": [
+        "fbclid"
+      ],
+      "kept": [
+        "fbid"
+      ],
+      "note": "facebook: strip fbclid, keep fbid"
+    },
+    {
+      "input": "https://www.facebook.com/story.php?story_fbid=123&id=456&__tn__=x&__cft__=y",
+      "expected_url": "https://www.facebook.com/story.php?story_fbid=123&id=456",
+      "removed": [
+        "__tn__",
+        "__cft__"
+      ],
+      "kept": [
+        "story_fbid",
+        "id"
+      ],
+      "note": "facebook: strip __tn__/__cft__"
+    },
+    {
+      "input": "https://www.facebook.com/?ref=abc&mibextid=xyz",
+      "expected_url": "https://www.facebook.com/",
+      "removed": [
+        "ref",
+        "mibextid"
+      ],
+      "kept": [],
+      "note": "facebook: all tracked, query removed"
+    },
+    {
+      "input": "https://www.instagram.com/p/ABC123/?igshid=abc&utm_source=x",
+      "expected_url": "https://www.instagram.com/p/ABC123/",
+      "removed": [
+        "igshid",
+        "utm_source"
+      ],
+      "kept": [],
+      "note": "instagram: strip igshid + utm"
+    },
+    {
+      "input": "https://www.instagram.com/reel/XYZ/?igsh=abc",
+      "expected_url": "https://www.instagram.com/reel/XYZ/",
+      "removed": [
+        "igsh"
+      ],
+      "kept": [],
+      "note": "instagram: strip igsh"
+    },
+    {
+      "input": "https://www.facebook.com/watch/?v=123&fbclid=abc",
+      "expected_url": "https://www.facebook.com/watch/?v=123",
+      "removed": [
+        "fbclid"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "facebook: keep v"
+    },
+    {
+      "input": "https://www.google.com/search?q=clean+share&ved=abc&ei=def",
+      "expected_url": "https://www.google.com/search?q=clean+share",
+      "removed": [
+        "ved",
+        "ei"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "google: keep q, strip ved/ei"
+    },
+    {
+      "input": "https://www.google.com/search?q=test&oq=test&gs_lcp=abc&sclient=gws-wiz",
+      "expected_url": "https://www.google.com/search?q=test",
+      "removed": [
+        "oq",
+        "gs_lcp",
+        "sclient"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "google: strip oq/gs_lcp/sclient"
+    },
+    {
+      "input": "https://www.google.com/search?hl=en&q=hello&source=hp",
+      "expected_url": "https://www.google.com/search?hl=en&q=hello",
+      "removed": [
+        "source"
+      ],
+      "kept": [
+        "hl",
+        "q"
+      ],
+      "note": "google: keep hl/q"
+    },
+    {
+      "input": "https://www.google.com/search?q=test&sxsrf=abc&rlz=1C1",
+      "expected_url": "https://www.google.com/search?q=test",
+      "removed": [
+        "sxsrf",
+        "rlz"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "google: strip sxsrf/rlz"
+    },
+    {
+      "input": "https://www.google.co.uk/search?q=test&ved=abc",
+      "expected_url": "https://www.google.co.uk/search?q=test",
+      "removed": [
+        "ved"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "google: co.uk host"
+    },
+    {
+      "input": "https://www.google.com/search?q=test",
+      "expected_url": "https://www.google.com/search?q=test",
+      "removed": [],
+      "kept": [
+        "q"
+      ],
+      "note": "google: clean link unchanged"
+    },
+    {
+      "input": "https://vm.tiktok.com/ABC123/?_t=abc&_r=def",
+      "expected_url": "https://vm.tiktok.com/ABC123/",
+      "removed": [
+        "_t",
+        "_r"
+      ],
+      "kept": [],
+      "note": "tiktok: strip _t/_r"
+    },
+    {
+      "input": "https://www.tiktok.com/@user/video/123?is_from_webapp=1&sender_device=pc&is_copy_url=1",
+      "expected_url": "https://www.tiktok.com/@user/video/123?is_copy_url=1",
+      "removed": [
+        "is_from_webapp",
+        "sender_device"
+      ],
+      "kept": [
+        "is_copy_url"
+      ],
+      "note": "tiktok: keep is_copy_url"
+    },
+    {
+      "input": "https://x.com/search?q=clean&s=abc&ref_src=twsrc",
+      "expected_url": "https://x.com/search?q=clean",
+      "removed": [
+        "s",
+        "ref_src"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "x: keep q, strip s/ref_src"
+    },
+    {
+      "input": "https://twitter.com/home?s=abc",
+      "expected_url": "https://twitter.com/home",
+      "removed": [
+        "s"
+      ],
+      "kept": [],
+      "note": "x: twitter host, strip s"
+    },
+    {
+      "input": "https://open.spotify.com/track/123?si=abc&context=xyz",
+      "expected_url": "https://open.spotify.com/track/123",
+      "removed": [
+        "si",
+        "context"
+      ],
+      "kept": [],
+      "note": "spotify: strip si/context"
+    },
+    {
+      "input": "https://open.spotify.com/track/123",
+      "expected_url": "https://open.spotify.com/track/123",
+      "removed": [],
+      "kept": [],
+      "note": "spotify: clean link unchanged"
+    },
+    {
+      "input": "https://www.linkedin.com/posts/user_post?trk=abc&lipi=def",
+      "expected_url": "https://www.linkedin.com/posts/user_post",
+      "removed": [
+        "trk",
+        "lipi"
+      ],
+      "kept": [],
+      "note": "linkedin: strip trk/lipi"
+    },
+    {
+      "input": "https://www.linkedin.com/in/name?trk=abc&id=123",
+      "expected_url": "https://www.linkedin.com/in/name?id=123",
+      "removed": [
+        "trk"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "linkedin: keep id"
+    },
+    {
+      "input": "https://www.aliexpress.com/item/123.html?spm=a2g0o.1&pdp_npi=2",
+      "expected_url": "https://www.aliexpress.com/item/123.html",
+      "removed": [
+        "spm",
+        "pdp_npi"
+      ],
+      "kept": [],
+      "note": "aliexpress: strip spm/pdp_npi"
+    },
+    {
+      "input": "https://www.aliexpress.com/item/123.html?algo_pvid=abc&scm=def",
+      "expected_url": "https://www.aliexpress.com/item/123.html",
+      "removed": [
+        "algo_pvid",
+        "scm"
+      ],
+      "kept": [],
+      "note": "aliexpress: strip algo/scm"
+    },
+    {
+      "input": "https://www.aliexpress.us/item/123.html?spm=abc",
+      "expected_url": "https://www.aliexpress.us/item/123.html",
+      "removed": [
+        "spm"
+      ],
+      "kept": [],
+      "note": "aliexpress: .us host"
+    },
+    {
+      "input": "https://www.linkedin.com/jobs/view/123?refId=abc&trk=def",
+      "expected_url": "https://www.linkedin.com/jobs/view/123",
+      "removed": [
+        "refid",
+        "trk"
+      ],
+      "kept": [],
+      "note": "linkedin: strip refId/trk (removed names are lower-cased)"
+    },
+    {
+      "input": "https://example.com/download?file=report.pdf&sig=abc123&utm_source=x",
+      "expected_url": "https://example.com/download?file=report.pdf&sig=abc123&utm_source=x",
+      "removed": [],
+      "kept": [
+        "file",
+        "sig",
+        "utm_source"
+      ],
+      "note": "signed: sig present, untouched"
+    },
+    {
+      "input": "https://example.com/pay?order=1&signature=xyz&fbclid=abc",
+      "expected_url": "https://example.com/pay?order=1&signature=xyz&fbclid=abc",
+      "removed": [],
+      "kept": [
+        "order",
+        "signature",
+        "fbclid"
+      ],
+      "note": "signed: signature present, untouched"
+    },
+    {
+      "input": "https://example.com/file?token=secret&id=7&utm_medium=x",
+      "expected_url": "https://example.com/file?token=secret&id=7&utm_medium=x",
+      "removed": [],
+      "kept": [
+        "token",
+        "id",
+        "utm_medium"
+      ],
+      "note": "signed: token present, untouched"
+    },
+    {
+      "input": "https://example-bucket.s3.amazonaws.com/file.pdf?X-Amz-Signature=abc&X-Amz-Expires=3600&utm_source=x",
+      "expected_url": "https://example-bucket.s3.amazonaws.com/file.pdf?X-Amz-Signature=abc&X-Amz-Expires=3600&utm_source=x",
+      "removed": [],
+      "kept": [
+        "x-amz-signature",
+        "x-amz-expires",
+        "utm_source"
+      ],
+      "note": "signed: X-Amz-* present, untouched"
+    },
+    {
+      "input": "https://example.com/?expires=1700000000&hmac=abc&id=1",
+      "expected_url": "https://example.com/?expires=1700000000&hmac=abc&id=1",
+      "removed": [],
+      "kept": [
+        "expires",
+        "hmac",
+        "id"
+      ],
+      "note": "signed: expires/hmac present, untouched"
+    },
+    {
+      "input": "https://example.com/?policy=abc&sig=xyz",
+      "expected_url": "https://example.com/?policy=abc&sig=xyz",
+      "removed": [],
+      "kept": [
+        "policy",
+        "sig"
+      ],
+      "note": "signed: policy/sig present, untouched"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc&sig=xyz&si=123",
+      "expected_url": "https://www.youtube.com/watch?v=abc&sig=xyz&si=123",
+      "removed": [],
+      "kept": [
+        "v",
+        "sig",
+        "si"
+      ],
+      "note": "signed: guard beats provider rule"
+    },
+    {
+      "input": "https://example.com/file?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=abc",
+      "expected_url": "https://example.com/file?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=abc",
+      "removed": [],
+      "kept": [
+        "x-amz-algorithm",
+        "x-amz-credential"
+      ],
+      "note": "signed: X-Amz-Algorithm present, untouched"
+    },
+    {
+      "input": "https://example.com/page?id=7",
+      "expected_url": "https://example.com/page?id=7",
+      "removed": [],
+      "kept": [
+        "id"
+      ],
+      "note": "keep: unknown param is identity, kept"
+    },
+    {
+      "input": "https://example.com/search?q=hello&page=2",
+      "expected_url": "https://example.com/search?q=hello&page=2",
+      "removed": [],
+      "kept": [
+        "q",
+        "page"
+      ],
+      "note": "keep: search params kept"
+    },
+    {
+      "input": "https://example.com/product/123?color=red&size=m",
+      "expected_url": "https://example.com/product/123?color=red&size=m",
+      "removed": [],
+      "kept": [
+        "color",
+        "size"
+      ],
+      "note": "keep: product params kept"
+    },
+    {
+      "input": "https://www.youtube.com/watch?v=abc",
+      "expected_url": "https://www.youtube.com/watch?v=abc",
+      "removed": [],
+      "kept": [
+        "v"
+      ],
+      "note": "keep: clean youtube unchanged"
+    },
+    {
+      "input": "https://example.com/page",
+      "expected_url": "https://example.com/page",
+      "removed": [],
+      "kept": [],
+      "note": "keep: no query at all"
+    },
+    {
+      "input": "https://example.com/page#section",
+      "expected_url": "https://example.com/page#section",
+      "removed": [],
+      "kept": [],
+      "note": "keep: fragment, no query"
+    },
+    {
+      "input": "https://example.com/page?id=7#details",
+      "expected_url": "https://example.com/page?id=7#details",
+      "removed": [],
+      "kept": [
+        "id"
+      ],
+      "note": "keep: fragment preserved"
+    },
+    {
+      "input": "https://example.com/page?lang=en&currency=usd",
+      "expected_url": "https://example.com/page?lang=en&currency=usd",
+      "removed": [],
+      "kept": [
+        "lang",
+        "currency"
+      ],
+      "note": "keep: lang/currency kept"
+    },
+    {
+      "input": "https://example.com/?a=1&b=2&c=3",
+      "expected_url": "https://example.com/?a=1&b=2&c=3",
+      "removed": [],
+      "kept": [
+        "a",
+        "b",
+        "c"
+      ],
+      "note": "keep: unknown params kept"
+    },
+    {
+      "input": "https://shop.example.com/item?sku=ABC123",
+      "expected_url": "https://shop.example.com/item?sku=ABC123",
+      "removed": [],
+      "kept": [
+        "sku"
+      ],
+      "note": "keep: sku on unknown host kept"
+    },
+    {
+      "input": "",
+      "expected_url": "",
+      "removed": [],
+      "kept": [],
+      "note": "edge: empty string, invalid"
+    },
+    {
+      "input": "not a url",
+      "expected_url": "not a url",
+      "removed": [],
+      "kept": [],
+      "note": "edge: not a url, invalid"
+    },
+    {
+      "input": "example.com/page?utm_source=x",
+      "expected_url": "example.com/page?utm_source=x",
+      "removed": [],
+      "kept": [],
+      "note": "edge: no scheme, invalid"
+    },
+    {
+      "input": "ftp://example.com/file?utm_source=x",
+      "expected_url": "ftp://example.com/file?utm_source=x",
+      "removed": [],
+      "kept": [],
+      "note": "edge: ftp scheme, invalid"
+    },
+    {
+      "input": "https://example.com/?utm_source=a&utm_source=b&id=7",
+      "expected_url": "https://example.com/?id=7",
+      "removed": [
+        "utm_source",
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "edge: duplicate tracker params"
+    },
+    {
+      "input": "https://example.com/?UTM_SOURCE=x&Id=7",
+      "expected_url": "https://example.com/?Id=7",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "edge: param names case-insensitive"
+    },
+    {
+      "input": "https://example.com/search?q=hello%20world&utm_source=x",
+      "expected_url": "https://example.com/search?q=hello%20world",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "q"
+      ],
+      "note": "edge: encoded value preserved"
+    },
+    {
+      "input": "https://example.com/?id=&utm_source=x",
+      "expected_url": "https://example.com/?id=",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "edge: empty kept value keeps '='"
+    },
+    {
+      "input": "https://example.com/?id&utm_source=x",
+      "expected_url": "https://example.com/?id",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "edge: param with no '=' keeps no '='"
+    },
+    {
+      "input": "https://example.com:8080/page?utm_source=x&id=1",
+      "expected_url": "https://example.com:8080/page?id=1",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [
+        "id"
+      ],
+      "note": "edge: port preserved"
+    },
+    {
+      "input": "https://m.youtube.com/watch?v=abc&si=123",
+      "expected_url": "https://m.youtube.com/watch?v=abc",
+      "removed": [
+        "si"
+      ],
+      "kept": [
+        "v"
+      ],
+      "note": "edge: m.youtube subdomain"
+    },
+    {
+      "input": "https://example.com/page/?utm_source=x",
+      "expected_url": "https://example.com/page/",
+      "removed": [
+        "utm_source"
+      ],
+      "kept": [],
+      "note": "edge: trailing slash, query removed"
+    }
+  ]
+}
