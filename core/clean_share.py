@@ -24,7 +24,7 @@ __version__ = "0.1.0"
 __author__ = "Slash-sketch"
 
 DEFAULT_RULES = {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "updated": "2026-11-17",
     "global_strip": [
         "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
@@ -38,6 +38,7 @@ DEFAULT_RULES = {
     "signed_guard": {"params": ["sig", "signature", "hmac", "token", "expires", "policy"]},
     "providers": [
         {"id": "youtube", "hosts": ["youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be", "music.youtube.com"], "strip": ["si", "feature", "ab_channel", "pp", "embeds_referring_euri", "embeds_referring_origin"], "keep": ["v", "t", "list", "index", "start", "end"], "source": "https://support.google.com/youtube/answer/171780"},
+        {"id": "google-play", "hosts": ["play.google.com"], "strip": ["referrer", "pcampaignid", "paffiliateid", "pcamrefid"], "keep": ["id", "hl", "gl"], "source": "https://support.google.com/affiliate/answer/7521141"},
         {"id": "google-search", "hosts": ["google.com", "www.google.com", "google.co.uk", "www.google.co.uk"], "strip": ["ved", "ei", "uact", "oq", "gs_lcp", "sclient", "source", "sca_esv", "sxsrf", "rlz", "sa", "sqi", "iflsig", "gbv"], "keep": ["q", "hl"], "source": "https://support.google.com/websearch/answer/35890"},
         {"id": "facebook", "hosts": ["facebook.com", "www.facebook.com", "m.facebook.com", "fb.com", "www.fb.com"], "strip": ["mibextid", "ref", "__tn__", "__xts__", "__cft__", "eav", "paipv", "rdc", "rdr", "idorvanity"], "keep": ["id", "story_fbid", "v"], "source": "https://www.facebook.com/help/192946942409345"},
         {"id": "instagram", "hosts": ["instagram.com", "www.instagram.com"], "strip": ["hl", "eav"], "keep": [], "source": "https://help.instagram.com/116024195217477"},
@@ -62,6 +63,15 @@ DEFAULT_RULES = {
         {"id": "whatsapp", "hosts": ["wa.me", "api.whatsapp.com", "whatsapp.com", "www.whatsapp.com"], "strip": [], "keep": ["text", "phone"], "source": "https://faq.whatsapp.com/"},
         {"id": "shein", "hosts": ["shein.com", "www.shein.com"], "strip": ["src_identifier", "src_module", "src_tab_page_id", "main_attr"], "keep": ["goods_id"], "source": "https://www.shein.com/"},
         {"id": "temu", "hosts": ["temu.com", "www.temu.com"], "strip": ["_x_sessn_id", "_x_ns", "refer_page_name", "refer_page_id", "refer_page_sn"], "keep": ["goods_id"], "source": "https://www.temu.com/"},
+        {"id": "quora", "hosts": ["quora.com", "www.quora.com"], "strip": ["ch", "oid", "srid", "target_type"], "keep": [], "source": "https://www.quora.com/"},
+        {"id": "notion", "hosts": ["notion.so", "www.notion.so", "notion.site"], "strip": ["pvs"], "keep": [], "source": "https://www.notion.so/"},
+        {"id": "etsy", "hosts": ["etsy.com", "www.etsy.com"], "strip": ["click_key", "click_sum", "ref", "frs", "sts", "ga_search_query", "ga_search_type", "ga_view_type", "ga_ship_to", "show_sold_out_detail", "organic_search_click", "logging_key"], "keep": ["q"], "source": "https://www.etsy.com/"},
+        {"id": "flipkart", "hosts": ["flipkart.com", "www.flipkart.com"], "strip": ["affid", "affExtParam1", "affExtParam2", "lid", "otracker"], "keep": ["pid", "q"], "source": "https://www.flipkart.com/"},
+        {"id": "booking", "hosts": ["booking.com", "www.booking.com"], "strip": ["aid", "label", "sid", "srpvid"], "keep": ["checkin", "checkout", "dest_id", "dest_type", "group_adults", "group_children", "no_rooms"], "source": "https://www.booking.com/"},
+        {"id": "imdb", "hosts": ["imdb.com", "www.imdb.com"], "strip": ["ref_"], "keep": ["q"], "source": "https://bugzilla.mozilla.org/show_bug.cgi?id=1945449"},
+        {"id": "app-store", "hosts": ["apps.apple.com", "itunes.apple.com", "www.apps.apple.com"], "strip": ["at", "ct", "pt"], "keep": ["id", "mt"], "source": "https://apps.apple.com/"},
+        {"id": "steam", "hosts": ["store.steampowered.com", "steampowered.com", "steamcommunity.com"], "strip": ["snr"], "keep": ["l"], "source": "https://store.steampowered.com/"},
+        {"id": "udemy", "hosts": ["udemy.com", "www.udemy.com"], "strip": ["ranMID", "ranEAID", "ranSiteID", "siteID"], "keep": ["couponCode", "q"], "source": "https://www.udemy.com/"},
     ],
 }
 
