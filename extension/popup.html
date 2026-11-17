@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clean-share</title>
+<style>
+  body { width: 360px; margin: 0; padding: 12px; font: 14px/1.45 system-ui, sans-serif; color: #1a1a1a; }
+  h1 { font-size: 16px; margin: 0 0 8px; }
+  p { margin: 6px 0; }
+  textarea { width: 100%; min-height: 64px; box-sizing: border-box; padding: 8px; font: inherit; }
+  .row { display: flex; gap: 6px; margin: 8px 0; flex-wrap: wrap; }
+  button { padding: 7px 10px; font: inherit; cursor: pointer; }
+  button.primary { font-weight: 700; }
+  #output[hidden] { display: none; }
+  code { word-break: break-all; background: #f2f2f2; padding: 2px 4px; }
+  .chip { display: inline-block; background: #eef; border-radius: 10px; padding: 1px 8px; margin: 2px 2px 0 0; font-size: 12px; }
+  .chip.removed { background: #fde8e8; }
+  .muted { color: #666; font-size: 12px; }
+  .share a { margin-right: 10px; }
+</style>
+</head>
+<body>
+<h1>Clean-share</h1>
+<p class="muted">Paste a link or a message. Nothing is uploaded — everything runs in this popup.</p>
+<textarea id="input" placeholder="https://example.com/page?utm_source=x&amp;id=7"></textarea>
+<div class="row">
+  <button id="cleanBtn" class="primary">Clean</button>
+  <button id="tabBtn" title="Clean the URL of the current tab">Clean current tab</button>
+  <button id="pasteBtn">Paste</button>
+  <button id="clearBtn">Clear</button>
+</div>
+<div id="output" hidden>
+  <p><strong>Clean link</strong></p>
+  <p><code id="cleanUrl"></code></p>
+  <p id="status"></p>
+  <p>Removed: <span id="removedList">—</span></p>
+  <p>Kept: <span id="keptList">—</span></p>
+  <div class="row">
+    <button id="copyBtn">Copy clean link</button>
+  </div>
+  <p class="share">
+    Share:
+    <a id="waLink" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+    <a id="tgLink" href="https://t.me/share/url" target="_blank" rel="noopener">Telegram</a>
+    <a id="smsLink" href="sms:?" target="_blank" rel="noopener">SMS</a>
+    <a id="emailLink" href="mailto:?" target="_blank" rel="noopener">Email</a>
+  </p>
+</div>
+<p class="muted">Offline. No analytics. Signed links are returned untouched so they still work.</p>
+<script type="module" src="popup.js"></script>
+</body>
+</html>
