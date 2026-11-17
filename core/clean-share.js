@@ -14,7 +14,7 @@
 //   isClean(url, options?)        -> boolean
 
 export const DEFAULT_RULES = {
-  version: "0.3.0",
+  version: "0.4.0",
   updated: "2026-11-17",
   global_strip: [
     "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
@@ -62,6 +62,11 @@ export const DEFAULT_RULES = {
     { id: "app-store", hosts: ["apps.apple.com", "itunes.apple.com", "www.apps.apple.com"], strip: ["at", "ct", "pt"], keep: ["id", "mt"], source: "https://apps.apple.com/" },
     { id: "steam", hosts: ["store.steampowered.com", "steampowered.com", "steamcommunity.com"], strip: ["snr"], keep: ["l"], source: "https://store.steampowered.com/" },
     { id: "udemy", hosts: ["udemy.com", "www.udemy.com"], strip: ["ranMID", "ranEAID", "ranSiteID", "siteID"], keep: ["couponCode", "q"], source: "https://www.udemy.com/" },
+    { id: "bbc", hosts: ["bbc.com", "www.bbc.com", "bbc.co.uk", "www.bbc.co.uk"], strip: ["at_medium", "at_campaign", "at_custom1", "at_custom2", "at_custom3", "at_custom4", "at_custom5", "at_bbc_team", "at_ptr_name"], keep: [], source: "https://www.bbc.com/" },
+    { id: "wikipedia", hosts: ["wikipedia.org", "www.wikipedia.org", "wikimedia.org", "www.wikimedia.org", "mediawiki.org", "www.mediawiki.org"], strip: ["wprov"], keep: ["title", "oldid", "action", "diff", "redirect"], source: "https://wikitech.wikimedia.org/wiki/Provenance" },
+    { id: "kickstarter", hosts: ["kickstarter.com", "www.kickstarter.com"], strip: ["ref"], keep: [], source: "https://help.kickstarter.com/en-us/articles/16236548-how-do-i-create-a-custom-referral-tag-and-track-referral-stats" },
+    { id: "substack", hosts: ["substack.com", "www.substack.com", "open.substack.com"], strip: ["r"], keep: [], source: "https://substack.com/" },
+    { id: "soundcloud", hosts: ["soundcloud.com", "www.soundcloud.com", "m.soundcloud.com"], strip: ["si"], keep: [], source: "https://soundcloud.com/" },
   ],
 };
 
