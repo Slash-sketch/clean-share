@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remove utm from a link — offline, no upload</title>
+<meta name="description" content="Remove utm_source, utm_medium, utm_campaign and other tracking parameters from a link, in your browser. Clean-share shows exactly what it removed. No upload, no account.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Remove utm from a link</h1>
+  <p>Marketing links carry <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>utm_term</code> and <code>utm_content</code> parameters. They do not change the page — they only track where you came from. Clean-share removes every parameter starting with <code>utm_</code>, plus other known trackers such as <code>fbclid</code>, <code>gclid</code> and <code>igshid</code>.</p>
+  <h2>Example</h2>
+  <p>Before:<br><code>https://example.com/page?utm_source=google&amp;utm_medium=cpc&amp;id=7</code></p>
+  <p>After:<br><code>https://example.com/page?id=7</code></p>
+  <p>The page id (<code>id</code>) is kept — only the trackers are removed. Clean-share reports every removal, so you can see exactly what changed.</p>
+  <h2>What it never strips</h2>
+  <p>Signed links are returned completely untouched. If a link carries <code>sig</code>, <code>token</code>, <code>expires</code> or an <code>X-Amz-*</code> parameter, nothing is removed — stripping one of those would break the link.</p>
+  <h2>Try it</h2>
+  <p><a class="btn" href="index.html">Open the Clean-share demo</a></p>
+  <p class="privacy">No upload. Everything runs in your browser, on your device. You can check this in your browser's DevTools Network tab — Clean-share makes no network requests.</p>
+  <footer><p><a href="index.html">Clean-share demo</a> · <a href="clean-whatsapp-link.html">Clean a WhatsApp link</a> · <a href="wa-me-link-generator.html">wa.me link generator</a></p></footer>
+</main>
+</body>
+</html>

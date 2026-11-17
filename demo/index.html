@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clean-share — clean a link, no upload</title>
+<meta name="description" content="Paste a link or a whole chat message. Clean-share removes tracking parameters in your browser, shows what was removed, and builds WhatsApp, Telegram, SMS and email share links. No upload, no account.">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+</head>
+<body>
+<main>
+  <h1 data-i18n="app_title">Clean-share</h1>
+  <p class="tagline" data-i18n="app_tagline">Paste a link, get the same link without the tracking.</p>
+  <p class="note" data-i18n="providers_note">25 providers, 40 global tracking parameters.</p>
+
+  <label for="input" data-i18n="input_label">Paste a link or a whole chat message</label>
+  <textarea id="input" data-i18n-placeholder="input_placeholder" placeholder="https://example.com/page?utm_source=x&amp;id=7"></textarea>
+  <div class="row">
+    <button id="cleanBtn" data-i18n="clean_button">Clean</button>
+    <button id="pasteBtn" class="secondary" data-i18n="paste_button">Paste</button>
+    <button id="exampleBtn" class="secondary" data-i18n="example_button">Try an example</button>
+    <button id="clearBtn" class="secondary" data-i18n="clear_button">Clear</button>
+  </div>
+
+  <label for="phone" data-i18n="phone_label">Phone number (optional, for WhatsApp / SMS)</label>
+  <input type="tel" id="phone" data-i18n-placeholder="phone_placeholder" placeholder="+92 300 1234567">
+  <label for="message" data-i18n="message_label">Message (optional)</label>
+  <input type="text" id="message" data-i18n-placeholder="message_placeholder" placeholder="Hi, I want this item">
+
+  <section id="output" class="output" hidden>
+    <h2 data-i18n="result_heading">Clean link</h2>
+    <p class="clean-url" id="cleanUrl"></p>
+    <p id="status"></p>
+    <div id="removedBlock">
+      <h3 data-i18n="removed_heading">Removed</h3>
+      <p id="removedList"></p>
+    </div>
+    <div id="keptBlock">
+      <h3 data-i18n="kept_heading">Kept</h3>
+      <p id="keptList"></p>
+    </div>
+    <div id="replacementsBlock" hidden>
+      <h3 data-i18n="replacements_heading">Links cleaned in your message</h3>
+      <p id="replacementsList"></p>
+    </div>
+    <div class="row">
+      <button id="copyBtn" data-i18n="copy_button">Copy clean link</button>
+    </div>
+    <h3 data-i18n="share_heading">Share it</h3>
+    <div class="row" id="shareRow">
+      <a class="btn" id="waLink" target="_blank" rel="noopener" data-i18n="whatsapp">WhatsApp</a>
+      <a class="btn" id="tgLink" target="_blank" rel="noopener" data-i18n="telegram">Telegram</a>
+      <a class="btn" id="smsLink" data-i18n="sms">SMS</a>
+      <a class="btn" id="emailLink" data-i18n="email">Email</a>
+    </div>
+  </section>
+
+  <p class="privacy" data-i18n="privacy_note">No upload. Everything runs in your browser, on your device. You can check this in your browser's DevTools Network tab — Clean-share makes no network requests.</p>
+  <footer>
+    <p>Clean-share is open source (MIT). <a href="../README.md">Read the README</a> · <a href="clean-whatsapp-link.html">Clean a WhatsApp link</a> · <a href="remove-utm-from-link.html">Remove utm from a link</a> · <a href="wa-me-link-generator.html">wa.me link generator</a></p>
+  </footer>
+</main>
+<script type="module" src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () { /* offline is best-effort */ });
+  });
+}
+</script>
+</body>
+</html>
