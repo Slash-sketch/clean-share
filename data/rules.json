@@ -72,6 +72,24 @@
       ]
     },
     {
+      "id": "google-play",
+      "hosts": [
+        "play.google.com"
+      ],
+      "strip": [
+        "referrer",
+        "pcampaignid",
+        "paffiliateid",
+        "pcamrefid"
+      ],
+      "keep": [
+        "id",
+        "hl",
+        "gl"
+      ],
+      "source": "https://support.google.com/affiliate/answer/7521141"
+    },
+    {
       "hosts": [
         "google.com",
         "www.google.com",
@@ -527,6 +545,166 @@
         "goods_id"
       ],
       "source": "https://www.temu.com/"
+    },
+    {
+      "id": "quora",
+      "hosts": [
+        "quora.com",
+        "www.quora.com"
+      ],
+      "strip": [
+        "ch",
+        "oid",
+        "srid",
+        "target_type"
+      ],
+      "keep": [],
+      "source": "https://www.quora.com/"
+    },
+    {
+      "id": "notion",
+      "hosts": [
+        "notion.so",
+        "www.notion.so",
+        "notion.site"
+      ],
+      "strip": [
+        "pvs"
+      ],
+      "keep": [],
+      "source": "https://www.notion.so/"
+    },
+    {
+      "id": "etsy",
+      "hosts": [
+        "etsy.com",
+        "www.etsy.com"
+      ],
+      "strip": [
+        "click_key",
+        "click_sum",
+        "ref",
+        "frs",
+        "sts",
+        "ga_search_query",
+        "ga_search_type",
+        "ga_view_type",
+        "ga_ship_to",
+        "show_sold_out_detail",
+        "organic_search_click",
+        "logging_key"
+      ],
+      "keep": [
+        "q"
+      ],
+      "source": "https://www.etsy.com/"
+    },
+    {
+      "id": "flipkart",
+      "hosts": [
+        "flipkart.com",
+        "www.flipkart.com"
+      ],
+      "strip": [
+        "affid",
+        "affExtParam1",
+        "affExtParam2",
+        "lid",
+        "otracker"
+      ],
+      "keep": [
+        "pid",
+        "q"
+      ],
+      "source": "https://www.flipkart.com/"
+    },
+    {
+      "id": "booking",
+      "hosts": [
+        "booking.com",
+        "www.booking.com"
+      ],
+      "strip": [
+        "aid",
+        "label",
+        "sid",
+        "srpvid"
+      ],
+      "keep": [
+        "checkin",
+        "checkout",
+        "dest_id",
+        "dest_type",
+        "group_adults",
+        "group_children",
+        "no_rooms"
+      ],
+      "source": "https://www.booking.com/"
+    },
+    {
+      "id": "imdb",
+      "hosts": [
+        "imdb.com",
+        "www.imdb.com"
+      ],
+      "strip": [
+        "ref_"
+      ],
+      "keep": [
+        "q"
+      ],
+      "source": "https://bugzilla.mozilla.org/show_bug.cgi?id=1945449"
+    },
+    {
+      "id": "app-store",
+      "hosts": [
+        "apps.apple.com",
+        "itunes.apple.com",
+        "www.apps.apple.com"
+      ],
+      "strip": [
+        "at",
+        "ct",
+        "pt"
+      ],
+      "keep": [
+        "id",
+        "mt"
+      ],
+      "source": "https://apps.apple.com/"
+    },
+    {
+      "id": "steam",
+      "hosts": [
+        "store.steampowered.com",
+        "steampowered.com",
+        "steamcommunity.com"
+      ],
+      "strip": [
+        "snr"
+      ],
+      "keep": [
+        "l"
+      ],
+      "source": "https://store.steampowered.com/"
+    },
+    {
+      "id": "udemy",
+      "hosts": [
+        "udemy.com",
+        "www.udemy.com"
+      ],
+      "strip": [
+        "ranMID",
+        "ranEAID",
+        "ranSiteID",
+        "siteID"
+      ],
+      "keep": [
+        "couponCode",
+        "q"
+      ],
+      "source": "https://www.udemy.com/"
     }
   ],
   "signed_guard": {
@@ -542,5 +720,5 @@
     ]
   },
   "updated": "2026-11-17",
-  "version": "0.2.0"
+  "version": "0.3.0"
 }
