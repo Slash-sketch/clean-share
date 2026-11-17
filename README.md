@@ -6,8 +6,9 @@ Paste a link, get the same link without the tracking — and a ready-to-share
 WhatsApp / Telegram / SMS / email link. Nothing is uploaded anywhere: every
 check happens on your own device, in the browser or on the command line.
 
-> **Demo:** coming soon — the Week 1 demo is a placeholder only
-> (`demo/README.md`). The library itself is finished and tested below.
+> **Demo:** live at https://slash-sketch.github.io/clean-share/demo/ —
+> paste a link or a message, clean it, copy or share. The library itself
+> is finished and tested below.
 
 ## Before / after
 
@@ -40,12 +41,15 @@ Clean-share never silently breaks a link:
 
 ## Install
 
-Package names are **to be confirmed** — Clean-share is **not yet published**
-to npm or PyPI. Do not install it from a registry yet; the names below are
-the intended names only.
+**Not published yet.** The name `clean-share` was checked on 2026-11-17 and
+is free on both npm and PyPI, but nothing has been published and the name
+is not reserved — availability can change until the first publish. Do not
+install it from a registry yet. The packaging files are ready
+(`package.json` for npm, `pyproject.toml` for PyPI, both version 0.1.0);
+publishing needs npm / PyPI accounts and is a separate, approved step.
 
 ```bash
-# Intended (not published yet — verify the name first):
+# Intended (not published yet):
 npm install clean-share
 pip install clean-share
 ```
@@ -53,6 +57,19 @@ pip install clean-share
 Until then, copy `core/clean-share.js` (browser / Node / extension) or
 `core/clean_share.py` (Python 3.10+, standard library only) into your
 project. Both files are zero-dependency and self-contained.
+
+## Chrome extension (Week 4)
+
+A Manifest V3 extension lives in `extension/` and reuses the same core —
+no cleaning logic is duplicated. No analytics, no network calls, offline.
+
+1. Open `chrome://extensions`, turn on **Developer mode**.
+2. **Load unpacked** and select the `extension/` folder.
+3. Click the toolbar icon to clean a pasted link or the current tab, or
+   right-click any link and choose **Clean-share: clean this link**.
+
+Full steps and the Web Store bundling note are in `extension/README.md`.
+The extension is **not** published to the Chrome Web Store yet.
 
 ## Use
 
@@ -135,13 +152,27 @@ clean-share/
   data/
     rules.json         # canonical rules (global + providers)
   tests/
-    fixtures.json      # 102 before/after URL pairs
+    fixtures.json      # 132 before/after URL pairs
     test_js.mjs        # JS test runner
     test_py.py         # Python test runner
   demo/                # static PWA demo (Week 3): paste a link or message, clean it, copy/share
+  extension/           # Chrome MV3 extension (Week 4): popup + service worker, reuses core/
+    manifest.json
+    popup.html
+    popup.js
+    background.js
+    README.md
+  package.json         # npm packaging (0.1.0) — NOT published yet
+  pyproject.toml       # PyPI packaging (0.1.0) — NOT published yet
 ```
 
 ## Status
+
+Week 4 — Chrome MV3 extension in `extension/` (popup + right-click
+service worker on the same core) plus npm (`package.json`) and PyPI
+(`pyproject.toml`) packaging files, both version 0.1.0. **Nothing is
+published yet**: not to npm, not to PyPI, not to the Chrome Web Store.
+Name `clean-share` was free on npm and PyPI when checked 2026-11-17.
 
 Week 2–3 — core library expanded to 25 providers, plus the static demo PWA
 in `demo/` (paste a link or a whole message, see what was removed, copy or

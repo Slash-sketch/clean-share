@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clean-share"
+version = "0.1.0"
+description = "Offline, zero-dependency URL cleaner + share-link builder — twin JS + Python library."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Slash-sketch", email = "husnainkhan900334@gmail.com" }]
+keywords = ["url", "cleaner", "tracking", "utm", "share", "offline"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+[project.urls]
+Homepage = "https://github.com/Slash-sketch/clean-share"
+Repository = "https://github.com/Slash-sketch/clean-share"
+Issues = "https://github.com/Slash-sketch/clean-share/issues"
+
+# clean_share is a single top-level module living in core/clean_share.py.
+# data/rules.json is the canonical rule file in the repo; the module also
+# carries an embedded snapshot (DEFAULT_RULES) so the installed package
+# works without the repo checkout.
+[tool.setuptools]
+py-modules = ["clean_share"]
+
+[tool.setuptools.package-dir]
+"" = "core"
