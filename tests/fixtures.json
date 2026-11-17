@@ -1,6 +1,6 @@
 {
  "version": "0.2.0",
- "count": 152,
+ "count": 162,
  "fixtures": [
   {
    "input": "https://example.com/page?utm_source=x&id=7",
@@ -1640,6 +1640,104 @@
     "q"
    ],
    "note": "udemy: keep q, strip siteID/ranMID"
+  },
+  {
+   "input": "https://www.bbc.com/news/articles/c6jd7k7g57x5o?at_medium=RSS&at_campaign=rss",
+   "expected_url": "https://www.bbc.com/news/articles/c6jd7k7g57x5o",
+   "removed": [
+    "at_medium",
+    "at_campaign"
+   ],
+   "kept": [],
+   "note": "bbc: strip at_medium/at_campaign RSS share tags"
+  },
+  {
+   "input": "https://www.bbc.co.uk/news/articles/cmpwln09gknzo?at_custom1=homepage&at_medium=email",
+   "expected_url": "https://www.bbc.co.uk/news/articles/cmpwln09gknzo",
+   "removed": [
+    "at_custom1",
+    "at_medium"
+   ],
+   "kept": [],
+   "note": "bbc: strip at_custom1/at_medium"
+  },
+  {
+   "input": "https://en.wikipedia.org/wiki/Cat?wprov=sfla1",
+   "expected_url": "https://en.wikipedia.org/wiki/Cat",
+   "removed": [
+    "wprov"
+   ],
+   "kept": [],
+   "note": "wikipedia: strip wprov share-tracking param"
+  },
+  {
+   "input": "https://en.wikipedia.org/w/index.php?title=Train&action=edit&wprov=sfsi1",
+   "expected_url": "https://en.wikipedia.org/w/index.php?title=Train&action=edit",
+   "removed": [
+    "wprov"
+   ],
+   "kept": [
+    "title",
+    "action"
+   ],
+   "note": "wikipedia: keep title/action (page identity), strip wprov"
+  },
+  {
+   "input": "https://www.kickstarter.com/projects/86285180/roost-laptop-stand?ref=discovery",
+   "expected_url": "https://www.kickstarter.com/projects/86285180/roost-laptop-stand",
+   "removed": [
+    "ref"
+   ],
+   "kept": [],
+   "note": "kickstarter: strip ref referral tag"
+  },
+  {
+   "input": "https://www.kickstarter.com/projects/12345/my-project?ref=nav_search&utm_source=twitter",
+   "expected_url": "https://www.kickstarter.com/projects/12345/my-project",
+   "removed": [
+    "ref",
+    "utm_source"
+   ],
+   "kept": [],
+   "note": "kickstarter: strip ref referral tag and global utm_source"
+  },
+  {
+   "input": "https://example.substack.com/p/my-post?r=abc123&utm_medium=ios",
+   "expected_url": "https://example.substack.com/p/my-post",
+   "removed": [
+    "r",
+    "utm_medium"
+   ],
+   "kept": [],
+   "note": "substack: strip r referral code and global utm_medium"
+  },
+  {
+   "input": "https://open.substack.com/pub/mynews/p/hello-world?r=xyz789",
+   "expected_url": "https://open.substack.com/pub/mynews/p/hello-world",
+   "removed": [
+    "r"
+   ],
+   "kept": [],
+   "note": "substack: strip r referral code"
+  },
+  {
+   "input": "https://soundcloud.com/artist/track-name?si=abc123&utm_source=clipboard",
+   "expected_url": "https://soundcloud.com/artist/track-name",
+   "removed": [
+    "si",
+    "utm_source"
+   ],
+   "kept": [],
+   "note": "soundcloud: strip si share id and global utm_source"
+  },
+  {
+   "input": "https://soundcloud.com/artist/track-name?si=abc123",
+   "expected_url": "https://soundcloud.com/artist/track-name",
+   "removed": [
+    "si"
+   ],
+   "kept": [],
+   "note": "soundcloud: strip si share id"
   }
  ]
 }
