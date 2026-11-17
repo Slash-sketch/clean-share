@@ -21,7 +21,7 @@ from urllib.parse import quote, unquote
 __all__ = ["clean", "clean_text", "share_links", "is_clean", "DEFAULT_RULES", "load_rules"]
 
 DEFAULT_RULES = {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "updated": "2026-11-17",
     "global_strip": [
         "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content",
@@ -44,6 +44,21 @@ DEFAULT_RULES = {
         {"id": "aliexpress", "hosts": ["aliexpress.com", "www.aliexpress.com", "aliexpress.us", "www.aliexpress.us"], "strip": ["spm", "algo_pvid", "algo_exp_id", "pdp_npi", "scm", "aff_fcid", "aff_fsk", "aff_platform", "aff_trace_key", "dp", "isViewCP", "srcSns"], "keep": [], "source": "https://helpcenter.aliexpress.com/s/article"},
         {"id": "spotify", "hosts": ["open.spotify.com", "spotify.com", "www.spotify.com"], "strip": ["si", "context", "nd"], "keep": [], "source": "https://support.spotify.com/article/share-music/"},
         {"id": "linkedin", "hosts": ["linkedin.com", "www.linkedin.com"], "strip": ["trk", "trkInfo", "lipi", "lici", "upsell", "refId", "midSig"], "keep": ["id", "start"], "source": "https://www.linkedin.com/help/linkedin/answer/a1337205"},
+        {"id": "daraz", "hosts": ["daraz.pk", "www.daraz.pk", "daraz.com", "www.daraz.com"], "strip": ["spm", "algo_pvid", "algo_exp_id", "scm", "search", "traffic_source"], "keep": ["sku", "id", "q"], "source": "https://www.daraz.pk/help/"},
+        {"id": "olx", "hosts": ["olx.com.pk", "www.olx.com.pk", "olx.com", "www.olx.com"], "strip": ["bs", "t", "referrer"], "keep": ["id", "q"], "source": "https://www.olx.com.pk/"},
+        {"id": "shopee", "hosts": ["shopee.ph", "shopee.com.my", "shopee.sg", "shopee.com", "www.shopee.ph", "www.shopee.com.my"], "strip": ["sp_atk", "xpt", "is_from_search", "af_siteid"], "keep": ["i", "s"], "source": "https://shopee.ph/"},
+        {"id": "ebay", "hosts": ["ebay.com", "www.ebay.com", "ebay.co.uk", "www.ebay.co.uk"], "strip": ["_trkparms", "_trksid", "hash", "amdata", "mkcid", "mkrid", "campid", "toolid", "customid"], "keep": ["itm", "_nkw"], "source": "https://www.ebay.com/help/"},
+        {"id": "reddit", "hosts": ["reddit.com", "www.reddit.com", "old.reddit.com", "out.reddit.com"], "strip": ["ref", "ref_source", "context"], "keep": ["q"], "source": "https://support.reddithelp.com/", "unwrap_param": "url", "unwrap_hosts": ["out.reddit.com"]},
+        {"id": "medium", "hosts": ["medium.com", "www.medium.com"], "strip": ["sk", "source"], "keep": [], "source": "https://help.medium.com/"},
+        {"id": "gmail-wrapper", "hosts": ["www.google.com", "google.com"], "strip": [], "keep": [], "source": "https://support.google.com/accounts/answer/32040", "unwrap_param": "q", "path_prefix": "/url"},
+        {"id": "outlook-safelinks", "hosts": ["safelinks.protection.outlook.com"], "strip": [], "keep": [], "source": "https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-about", "unwrap_param": "url"},
+        {"id": "tco-bitly", "hosts": ["t.co", "bit.ly", "bitly.com", "www.bitly.com"], "strip": [], "keep": [], "source": "https://help.x.com/en/using-x/how-to-use-t-co", "unwrap_param": "url"},
+        {"id": "pinterest", "hosts": ["pinterest.com", "www.pinterest.com", "pin.it"], "strip": ["invite"], "keep": [], "source": "https://help.pinterest.com/en/article/share-pins"},
+        {"id": "snapchat", "hosts": ["snapchat.com", "www.snapchat.com"], "strip": ["sender_web_id", "share_id"], "keep": [], "source": "https://help.snapchat.com/"},
+        {"id": "telegram", "hosts": ["t.me", "telegram.me", "telegram.org", "www.telegram.org"], "strip": ["ref"], "keep": ["start"], "source": "https://telegram.org/faq"},
+        {"id": "whatsapp", "hosts": ["wa.me", "api.whatsapp.com", "whatsapp.com", "www.whatsapp.com"], "strip": [], "keep": ["text", "phone"], "source": "https://faq.whatsapp.com/"},
+        {"id": "shein", "hosts": ["shein.com", "www.shein.com"], "strip": ["src_identifier", "src_module", "src_tab_page_id", "main_attr"], "keep": ["goods_id"], "source": "https://www.shein.com/"},
+        {"id": "temu", "hosts": ["temu.com", "www.temu.com"], "strip": ["_x_sessn_id", "_x_ns", "refer_page_name", "refer_page_id", "refer_page_sn"], "keep": ["goods_id"], "source": "https://www.temu.com/"},
     ],
 }
 
@@ -105,6 +120,31 @@ def _find_provider(host, rules):
     return None
 
 
+def _find_wrapper(host, before, rules):
+    """Find a redirect-wrapper provider for this host/path, if any."""
+    if not host:
+        return None
+    path = re.sub(r"^https?://[^/?#]+", "", before, flags=re.IGNORECASE) or "/"
+    for provider in rules.get("providers") or []:
+        if not provider.get("unwrap_param"):
+            continue
+        prefix = provider.get("path_prefix")
+        if prefix and not path.startswith(prefix):
+            continue
+        for h in provider.get("unwrap_hosts") or provider.get("hosts") or []:
+            hl = h.lower()
+            if host == hl or host.endswith("." + hl):
+                return provider
+    return None
+
+
+def _decode_value(raw):
+    try:
+        return unquote(raw)
+    except Exception:
+        return raw
+
+
 def clean(url, rules=None):
     """Strip tracking parameters. Returns {url, removed, kept, rules}."""
     rules = rules or DEFAULT_RULES
@@ -144,6 +184,28 @@ def clean(url, rules=None):
         }
 
     host = _host_of(before)
+
+    # Redirect-wrapper unwrap (offline only): if this host/path is a known
+    # wrapper and the target URL is already encoded in the link itself,
+    # unwrap it and clean the target. Never follow a short link over the
+    # network — a real t.co/bit.ly short code has no encoded target and
+    # falls through to normal stripping below, unchanged.
+    wrapper = _find_wrapper(host, before, rules)
+    if wrapper:
+        target_param = next(
+            (p for p in params if p["name"] == wrapper["unwrap_param"].lower()), None
+        )
+        if target_param:
+            target = _decode_value(target_param["raw_value"])
+            if re.match(r"https?://", target, re.IGNORECASE) and target != url:
+                inner = clean(target, rules=rules)
+                return {
+                    "url": inner["url"],
+                    "removed": inner["removed"],
+                    "kept": inner["kept"],
+                    "rules": [f"unwrap:{wrapper['id']}"] + inner["rules"],
+                }
+
     provider = _find_provider(host, rules)
     provider_strip = {s.lower() for s in (provider or {}).get("strip") or []}
     provider_keep = {s.lower() for s in (provider or {}).get("keep") or []}
